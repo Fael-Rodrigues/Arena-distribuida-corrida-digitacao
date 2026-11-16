@@ -1,0 +1,15 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+body { background: #f0f2f5; color: #333; display: flex; justify-content: center; padding: 20px; }
+.container { width: 100%; max-width: 500px; }
+header { text-align: center; margin-bottom: 20px; }
+.card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.hidden { display: none; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+.btn-primary { width: 100%; padding: 12px; background: #1f4e79; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.btn-primary:hover { background: #153452; }
+.info-bar { display: flex; justify-content: space-between; background: #e9ecef; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+.badge { background: #1f4e79; color: white; padding: 2px 8px; border-radius: 12px; font-size: 13px; }
+.player-list { list-style: none; }
+.player-list li { padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
