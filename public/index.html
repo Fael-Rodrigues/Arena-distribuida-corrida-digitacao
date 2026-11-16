@@ -1,45 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Corrida de Digitação - Arena Distribuída</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrida de Digitação - Arena Distribuída</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <h1>Corrida de Digitação 🏎️</h1>
-      <p id="status-conexao">Conectando...</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Corrida de Digitação 🏎️</h1>
+            <p id="status-conexao">Conectando...</p>
+        </header>
 
-    <main>
-      <section id="tela-login" class="card">
-        <h2>Entrar na Partida</h2>
-        <div class="form-group">
-          <label for="nome">Apelido:</label>
-          <input type="text" id="nome" value="Jogador">
-        </div>
-        <div class="form-group">
-          <label for="sala">Código da Sala:</label>
-          <input type="text" id="sala" value="SALA1">
-        </div>
-        <button id="btn-entrar" class="btn-primary">Entrar na Sala</button>
-      </section>
+        <main>
+            <!-- TELA 1: ENTRAR NA SALA -->
+            <section id="tela-login" class="card">
+                <h2>Entrar na Partida</h2>
+                <div class="form-group">
+                    <label for="nome">Apelido:</label>
+                    <input type="text" id="nome" placeholder="Seu nome" value="Jogador">
+                </div>
+                <div class="form-group">
+                    <label for="sala">Código da Sala:</label>
+                    <input type="text" id="sala" placeholder="Ex: SALA1" value="SALA1">
+                </div>
+                <button id="btn-entrar" class="btn-primary">Entrar na Sala</button>
+            </section>
 
-      <section id="tela-jogo" class="card hidden">
-        <div class="info-bar">
-          <div><strong>Função:</strong> <span id="meu-papel" class="badge">-</span></div>
-          <div><strong>Sala:</strong> <span id="id-sala">-</span></div>
-        </div>
+            <!-- TELA 2: LOBBY -->
+            <section id="tela-lobby" class="card hidden">
+                <div class="info-bar">
+                    <div><strong>Função:</strong> <span id="meu-papel" class="badge">-</span></div>
+                    <div><strong>Sala:</strong> <span id="id-sala">-</span></div>
+                </div>
 
-        <h3>Participantes Conectados</h3>
-        <ul id="lista-jogadores" class="player-list"></ul>
-      </section>
-    </main>
-  </div>
+                <div id="aviso-recorde-lobby" class="recorde-box hidden"></div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="client.js"></script>
+                <h3>Participantes Conectados</h3>
+                <ul id="lista-jogadores" class="player-list"></ul>
+
+                <div class="acoes">
+                    <button id="btn-iniciar" class="btn-success hidden">Iniciar Jogo</button>
+                    <p id="msg-aguardando" class="texto-mutado">Aguardando o Jogador 1 iniciar a partida...</p>
+                </div>
+            </section>
+
+            <!-- TELA 3: ARENA DO JOGO -->
+            <section id="tela-corrida" class="card hidden">
+                <div class="topo-corrida">
+                    <span id="status-corrida" class="status-tag">Prepare-se...</span>
+                    <button id="btn-finalizar" class="btn-danger">Finalizar Jogo</button>
+                </div>
+
+                <div id="pistas-container" class="pistas"></div>
+
+                <div class="caixa-texto">
+                    <p id="texto-oficial">Aguardando largada...</p>
+                </div>
+
+                <textarea id="input-digitacao" rows="3" placeholder="Aguarde a contagem regressiva..."
+                    disabled></textarea>
+            </section>
+
+            <!-- TELA 4: RESULTADO / PLACAR -->
+            <section id="tela-resultado" class="card hidden">
+                <h2>Resultado da Corrida 🏁</h2>
+                <div id="box-recorde-final" class="recorde-box hidden"></div>
+                <ul id="lista-ranking" class="player-list"></ul>
+                <button id="btn-voltar-lobby" class="btn-primary" style="margin-top: 15px;">Jogar Novamente
+                    (Revanche)</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
 </body>
+
 </html>
