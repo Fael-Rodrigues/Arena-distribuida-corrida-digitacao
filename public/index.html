@@ -12,7 +12,10 @@
     <div class="container">
         <header>
             <h1>Corrida de Digitação 🏎️</h1>
-            <p id="status-conexao">Conectando...</p>
+            <div class="status-bar-rede">
+                <span id="status-conexao">Conectando...</span>
+                <span id="indicador-ping" class="ping-badge">Latência: -- ms</span>
+            </div>
         </header>
 
         <main>
@@ -42,6 +45,16 @@
                 <h3>Participantes Conectados</h3>
                 <ul id="lista-jogadores" class="player-list"></ul>
 
+                <!-- Chat da Sala -->
+                <div class="chat-box">
+                    <h4>Chat da Sala</h4>
+                    <div id="chat-mensagens" class="chat-mensagens"></div>
+                    <div class="chat-input-group">
+                        <input type="text" id="input-chat" placeholder="Digite uma mensagem...">
+                        <button id="btn-enviar-chat" class="btn-secondary">Enviar</button>
+                    </div>
+                </div>
+
                 <div class="acoes">
                     <button id="btn-iniciar" class="btn-success hidden">Iniciar Jogo</button>
                     <p id="msg-aguardando" class="texto-mutado">Aguardando o Jogador 1 iniciar a partida...</p>
@@ -52,7 +65,10 @@
             <section id="tela-corrida" class="card hidden">
                 <div class="topo-corrida">
                     <span id="status-corrida" class="status-tag">Prepare-se...</span>
-                    <button id="btn-finalizar" class="btn-danger">Finalizar Jogo</button>
+                    <div class="controles-topo">
+                        <span id="cronometro-sala" class="cronometro-badge">⏱️ 0.0s</span>
+                        <button id="btn-finalizar" class="btn-danger">Encerrar Partida</button>
+                    </div>
                 </div>
 
                 <div id="pistas-container" class="pistas"></div>
@@ -67,9 +83,14 @@
 
             <!-- TELA 4: RESULTADO / PLACAR -->
             <section id="tela-resultado" class="card hidden">
-                <h2>Resultado da Corrida 🏁</h2>
-                <div id="box-recorde-final" class="recorde-box hidden"></div>
+                <h2>Resultado da Partida 🏁</h2>
                 <ul id="lista-ranking" class="player-list"></ul>
+
+                <div id="secao-historico" class="historico-container hidden">
+                    <h3>🏆 Melhores Tempos da Sala (Menor para Maior)</h3>
+                    <ul id="lista-historico-tempos" class="player-list"></ul>
+                </div>
+
                 <button id="btn-voltar-lobby" class="btn-primary" style="margin-top: 15px;">Jogar Novamente
                     (Revanche)</button>
             </section>
